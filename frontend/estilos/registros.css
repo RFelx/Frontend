@@ -1,0 +1,31 @@
+.tabla th{
+    padding: 0px 20px;
+    justify-content: center;
+}
+
+.tabla td{
+    padding: 0px 20px;
+    text-align: center;
+}
+
+.titulor {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;            
+    padding-bottom: 30px;
+}
+
+.titulor button{
+    margin-top: 20px;
+    cursor: pointer;
+    width: 190px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1783db;
+    color: white;
+}
+
+.titulor button:hover{
+    background-color: rgb(7, 66, 176);
+}
