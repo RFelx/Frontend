@@ -23,6 +23,9 @@ document.getElementById("login").addEventListener("submit", async (event) => {
 
         
         localStorage.setItem("token", data.access_token);
+        localStorage.setItem("rol", data.rol);
+        localStorage.setItem("nombre", data.nombre);
+        localStorage.setItem("correo", data.correo);
 
       
         window.location.href = "/FRONTEND/paginas/inicio_pruebas.html";

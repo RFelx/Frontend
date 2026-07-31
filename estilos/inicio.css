@@ -27,6 +27,13 @@ header{
     z-index: 200;
 }
 
+#user_info {
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 20px;
+    color: #333;
+}
+
 .icon__menu{
     width: 50px;
     height: 100%;

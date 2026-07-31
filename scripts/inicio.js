@@ -1,3 +1,22 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const rol = localStorage.getItem("rol");
+    const usuariosAreasOption = document.getElementById("soloAdmin");
+
+    if (rol !== "Administrador") {
+        usuariosAreasOption.style.display = "none";
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const nombre = localStorage.getItem("nombre");
+    const userInfo = document.getElementById("user_info");
+    if (nombre) {
+        userInfo.textContent = nombre;
+    }
+});
+
+
+
 //Ejecutar función en el evento click
 document.getElementById("btn_open").addEventListener("click", open_close_menu);
 
