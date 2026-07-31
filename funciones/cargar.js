@@ -1,4 +1,3 @@
-
 // Contenido dinámico para cada sección
 const views = {
     inicio: `
@@ -198,8 +197,47 @@ const views = {
         </div>
     `,
     actualizar: `
-        <h1>Usuarios y Areas</h1>
-        <p>Bottom Text.</p>
+<div class="contenedorUsuarios">
+    <!-- Formulario -->
+    <div class="formUsuarios">
+        <h3>Agregar Usuario</h3>
+        <form id="formUser">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" required>
+
+            <label for="rol">Rol:</label>
+            <select id="rol" name="rol" required>
+                <option value="Administrador">Administrador</option>
+                <option value="Guardia">Guardia</option>
+                <option value="Guardia">Operativo</option>
+            </select>
+
+            <label for="password_hash">Contraseña:</label>
+            <input type="password" id="password_hash" name="password_hash" required>
+
+            <label for="es_anfitrion">Es anfitrión:</label>
+            <input type="checkbox" id="es_anfitrion" name="es_anfitrion">
+
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+
+    <!-- Tabla -->
+    <div class="tablaUsuarios">
+        <table id="tablaUser" border="1">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
     `
 };
 
@@ -220,6 +258,10 @@ function loadView(viewName) {
         cargarSalidas();
         activarBotonesDashboard();
     }
+
+    if (viewName === "actualizar") {
+    inicializarUsuarios();
+}
 
 }
 

@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nombre = localStorage.getItem("nombre");
     const userInfo = document.getElementById("user_info");
     if (nombre) {
-        userInfo.textContent = nombre;
+        userInfo.textContent = `Bienvenido, ${nombre}`;
     }
 });
 
