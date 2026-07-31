@@ -1,32 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login Page</title>
-        <link rel="stylesheet" href="estilos/login.css">
-    </head>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
 
-    <body>
-        <div class="container">
-            <div class="container-form">
-                <form class="sign-in" id="login">
-                    <img class="logo"  src="imagenes/empresalogo.png">
-                    <h2>Iniciar Sesion</h2>
-                    <span>Use su correo y contrasena</span>
-                    <div class="container-input">
-                        <img class="correo" src="imagenes/correologo.png">
-                        <input type="text" id="email" placeholder="Ingrese su email">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SENTINEL | Secure Access Intelligence</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="imagenes/logo-sentinel.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="estilos/login.css?v=4"
+    >
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <section class="login-panel">
+
+            <div class="login-card">
+
+                <div class="login-brand">
+
+                    <img
+                        class="login-logo login-logo-sentinel"
+                        src="imagenes/logo-sentinel.png"
+                        alt="SENTINEL Secure Access Intelligence"
+                    >
+
+                    <div class="login-brand-text">
+                        <span class="login-eyebrow">
+                            SENTINEL
+                        </span>
+
+                        <h1>
+                            Secure Access Intelligence
+                        </h1>
                     </div>
-                    <div class="container-input">
-                        <img class="correo" src="imagenes/locklogo.png">
-                        <input type="password" id="password" placeholder="Ingrese su contrasena">
+
+                </div>
+
+                <div class="login-intro">
+                    <h2>Iniciar sesión</h2>
+
+                    <p>
+                        Accede a la plataforma de control y
+                        gestión inteligente de visitantes.
+                    </p>
+                </div>
+
+                <form
+                    class="login-form"
+                    id="login"
+                >
+
+                    <div class="form-group">
+                        <label for="email">
+                            Correo electrónico
+                        </label>
+
+                        <div class="input-wrapper">
+                            <img
+                                src="imagenes/correologo.png"
+                                alt=""
+                                aria-hidden="true"
+                            >
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="nombre@empresa.com"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
                     </div>
-                    <button>Iniciar Sesion</button>
+
+                    <div class="form-group">
+                        <label for="password">
+                            Contraseña
+                        </label>
+
+                        <div class="input-wrapper">
+                            <img
+                                src="imagenes/locklogo.png"
+                                alt=""
+                                aria-hidden="true"
+                            >
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Ingresa tu contraseña"
+                                autocomplete="current-password"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div
+                        id="loginMessage"
+                        class="login-message"
+                        role="alert"
+                        aria-live="polite"
+                    ></div>
+
+                    <button
+                        type="submit"
+                        id="loginButton"
+                        class="login-button"
+                    >
+                        Iniciar sesión
+                    </button>
+
                 </form>
-            </div>
-        </div>
 
-        <script src="scripts/login.js"></script>
-    </body>
+                <p class="login-footer">
+                    Acceso exclusivo para personal autorizado.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section
+            class="login-visual"
+            aria-label="Sistema de gestión de accesos"
+        >
+
+            <div class="visual-overlay">
+
+                <div class="visual-content">
+                    <span>SENTINEL</span>
+
+                    <h2>
+                        Secure Access Intelligence
+                    </h2>
+
+                    <p>
+                        Control inteligente de visitantes,
+                        accesos, salidas e historial de movimientos
+                        desde una sola plataforma.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="scripts/login.js"></script>
+
+</body>
 </html>

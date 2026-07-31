@@ -106,3 +106,67 @@
 #btn_agregar:hover {
     background-color: #176fb7;
 }
+
+.estado {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px 10px;
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.estado-dentro {
+    color: #166534;
+    background-color: #dcfce7;
+    border: 1px solid #166534;
+}
+
+.estado-salida {
+    color: #475569;
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+}
+
+.estado-cancelado {
+    color: #991b1b;
+    background-color: #fee2e2;
+    border: 1px solid #fecaca;
+}
+
+.btn-salida {
+    min-width: 130px;
+    padding: 8px 12px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #2188dc;
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
+}
+
+.btn-salida:hover {
+    background-color: #176fb8;
+}
+
+.btn-salida:active {
+    transform: scale(0.98);
+}
+
+.btn-salida:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+    transform: none;
+}

@@ -2,27 +2,170 @@
 // Contenido dinámico para cada sección
 const views = {
     inicio: `
-        <div class="dashboard" id="dash">
-            <h2 id="dash24"></h2>
-            <h2 id="dashTotal"></h2>
-            <h2 id="dashSalidas"></h2>
-        </div>
-        <div class="titulor">
-            <h2>Registros Recientes</h2>
-        </div>
-        <div class="tabla">
-            <table id="tabla" border="1">
-                <tr>
-                    <th>ID de Registro</th>
-                    <th>ID de Visitante</th>
-                    <th>ID de Area</th>
-                    <th>ID de Usuario</th>
-                    <th>Motivo de Visita</th>
-                    <th>Hora Entrada</th>
-                    <th>Hora Salida</th>
-                </tr>
-            </table>
-        </div>
+        <section class="dashboard">
+
+            <div class="dashboard-header">
+                <div>
+                    <span class="dashboard-eyebrow">
+                        Control de accesos
+                    </span>
+
+                    <h1>Dashboard</h1>
+
+                    <p>
+                        Resumen general de ingresos, salidas y
+                        actividad reciente.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="dashboard-btn-registro"
+                    id="btnDashboardRegistro"
+                >
+                    Agregar nuevo registro
+                </button>
+            </div>
+
+            <div class="dashboard-kpis">
+
+                <article class="kpi-card">
+                    <div class="kpi-icon kpi-icon-ingresos">
+                        ↗
+                    </div>
+
+                    <div class="kpi-content">
+                        <span class="kpi-label">
+                            Ingresos recientes
+                        </span>
+
+                        <strong
+                            class="kpi-value"
+                            id="dash24"
+                        >
+                            0
+                        </strong>
+
+                        <span class="kpi-description">
+                            Durante las últimas 24 horas
+                        </span>
+                    </div>
+                </article>
+
+                <article class="kpi-card">
+                    <div class="kpi-icon kpi-icon-total">
+                        ≡
+                    </div>
+
+                    <div class="kpi-content">
+                        <span class="kpi-label">
+                            Registros totales
+                        </span>
+
+                        <strong
+                            class="kpi-value"
+                            id="dashTotal"
+                        >
+                            0
+                        </strong>
+
+                        <span class="kpi-description">
+                            Historial acumulado
+                        </span>
+                    </div>
+                </article>
+
+                <article class="kpi-card">
+                    <div class="kpi-icon kpi-icon-salidas">
+                        ↘
+                    </div>
+
+                    <div class="kpi-content">
+                        <span class="kpi-label">
+                            Salidas recientes
+                        </span>
+
+                        <strong
+                            class="kpi-value"
+                            id="dashSalidas"
+                        >
+                            0
+                        </strong>
+
+                        <span class="kpi-description">
+                            Durante las últimas 24 horas
+                        </span>
+                    </div>
+                </article>
+
+                <article class="kpi-card">
+                    <div class="kpi-icon kpi-icon-dentro">
+                        ●
+                    </div>
+
+                    <div class="kpi-content">
+                        <span class="kpi-label">
+                            Personas dentro
+                        </span>
+
+                        <strong
+                            class="kpi-value"
+                            id="dashDentro"
+                        >
+                            0
+                        </strong>
+
+                        <span class="kpi-description">
+                            Accesos actualmente activos
+                        </span>
+                    </div>
+                </article>
+
+            </div>
+
+            <section class="dashboard-recent">
+
+                <div class="recent-header">
+                    <div>
+                        <h2>Registros recientes</h2>
+
+                        <p>
+                            Movimientos registrados durante
+                            las últimas 24 horas.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn-ver-historial"
+                        id="btnVerHistorial"
+                    >
+                        Ver historial completo
+                    </button>
+                </div>
+
+                <div class="recent-table-container">
+                    <table id="tabla" class="recent-table">
+                        <thead>
+                            <tr>
+                                <th>Visitante</th>
+                                <th>Área</th>
+                                <th>Anfitrión</th>
+                                <th>Motivo de visita</th>
+                                <th>Hora entrada</th>
+                                <th>Hora salida</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaRecientesBody">
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+        </section>
     `,
     registrar: `
         <div class="titulor">
@@ -75,13 +218,88 @@ function loadView(viewName) {
         cargarRegistros();
         HistorialReciente();
         cargarSalidas();
+        activarBotonesDashboard();
     }
 
+}
+
+function activarBotonesDashboard() {
+    const btnNuevoRegistro =
+        document.getElementById(
+            "btnDashboardRegistro"
+        );
+
+    const btnVerHistorial =
+        document.getElementById(
+            "btnVerHistorial"
+        );
+
+    if (btnNuevoRegistro) {
+        btnNuevoRegistro.addEventListener(
+            "click",
+            () => {
+                loadView("registrar");
+
+                document
+                    .querySelectorAll(
+                        ".options__menu a"
+                    )
+                    .forEach((link) => {
+                        link.classList.remove(
+                            "selected"
+                        );
+                    });
+
+                const links =
+                    document.querySelectorAll(
+                        ".options__menu a"
+                    );
+
+                if (links[1]) {
+                    links[1].classList.add(
+                        "selected"
+                    );
+                }
+            }
+        );
+    }
+
+    if (btnVerHistorial) {
+        btnVerHistorial.addEventListener(
+            "click",
+            () => {
+                loadView("registrar");
+
+                document
+                    .querySelectorAll(
+                        ".options__menu a"
+                    )
+                    .forEach((link) => {
+                        link.classList.remove(
+                            "selected"
+                        );
+                    });
+
+                const links =
+                    document.querySelectorAll(
+                        ".options__menu a"
+                    );
+
+                if (links[1]) {
+                    links[1].classList.add(
+                        "selected"
+                    );
+                }
+            }
+        );
+    }
 }
 
 // Asignar eventos a las opciones del menú
 
 document.addEventListener("DOMContentLoaded", () => {
+    loadView("inicio");
+    
     const links = document.querySelectorAll(".options__menu a");
 
     links.forEach((link, index) => {

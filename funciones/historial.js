@@ -43,7 +43,7 @@ async function historialRegistros() {
                     }
                 );
 
-            let fechaSalidaFormateada = "Dentro";
+            let fechaSalidaFormateada = "-";
 
             if (registro.fecha_hora_salida) {
                 const fechaSalida = new Date(
@@ -86,7 +86,17 @@ async function historialRegistros() {
                 <td>${registro.motivo_visita}</td>
                 <td>${fechaEntradaFormateada}</td>
                 <td>${fechaSalidaFormateada}</td>
-                <td>${registro.estatus}</td>
+                <td>
+                    <span class="${
+                        registro.estatus === "Dentro"
+                            ? "estado estado-dentro"
+                            : registro.estatus === "Salida registrada"
+                                ? "estado estado-salida"
+                                : "estado estado-cancelado"
+                    }">
+                        ${registro.estatus}
+                    </span>
+                </td>
                 <td>${accion}</td>
             `;
 
