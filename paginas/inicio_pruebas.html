@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor</title>
+
+    <link rel="stylesheet" href="../estilos/inicio.css">
+    <link rel="stylesheet" href="../estilos/registros.css">
+    <link rel="stylesheet" href="../estilos/modal.css">
+
+</head>
+<body id="body">
+    
+    <header>
+        <div class="icon__menu">
+            <img src="../imagenes/barras.png" id="btn_open">
+        </div>
+    </header>
+
+    <div class="menu__side" id="menu_side">
+
+        <div class="name__page">
+            <img src="../imagenes/empresalogo.png">
+            <h4>Gestor</h4>
+        </div>
+
+        <div class="options__menu">	
+
+            <a href="#" class="selected">
+                <div class="option">
+                    <img src="../imagenes/home.png">
+                    <h4>Dashboard</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <img src="../imagenes/agregar.png" alt="">
+                    <h4>Registros</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <img src="../imagenes/usuarios.png" alt="">
+                    <h4>Usuarios y Areas</h4>
+                </div>
+            </a>
+
+            <a href="#" id="logout">
+                <div class="option">
+                    <img src="../imagenes/251376.png">
+                    <h4>Cerrar Sesion</h4>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <main>
+        <div class="dashboard" id="dash">
+            <h2 id="dash24"></h2>
+            <h2 id="dashTotal"></h2>
+            <h2 id="dashSalidas"></h2>
+        </div>
+        <div class="titulor">
+            <h2>Registros Recientes</h2>
+        </div>
+        <div class="tabla">
+            <table id="tabla" border="1">
+                <tr>
+                    <th>ID de Registro</th>
+                    <th>ID de Visitante</th>
+                    <th>ID de Area</th>
+                    <th>ID de Usuario</th>
+                    <th>Motivo de Visita</th>
+                    <th>Hora Entrada</th>
+                    <th>Hora Salida</th>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+    <script src="../scripts/inicio.js"></script>
+    <script src="../funciones/cargar.js"></script>
+    <script src="../funciones/historial.js"></script>
+    <script src="../scripts/nuevo_registro.js"></script>
+    <script src="../funciones/variables_dashboard.js"></script>
+    <script src="../scripts/logout.js"></script>
+</body>
+</html>
