@@ -197,48 +197,276 @@ const views = {
         </div>
     `,
     actualizar: `
-<div class="contenedorUsuarios">
-    <!-- Formulario -->
-    <div class="formUsuarios">
-        <h3>Agregar Usuario</h3>
-        <form id="formUser">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
+        <section class="personal-page">
 
-            <label for="correo">Correo:</label>
-            <input type="email" id="correo" name="correo" required>
+            <div class="personal-header">
+                <div>
+                    <span class="personal-eyebrow">
+                        Administración
+                    </span>
 
-            <label for="rol">Rol:</label>
-            <select id="rol" name="rol" required>
-                <option value="Administrador">Administrador</option>
-                <option value="Guardia">Guardia</option>
-                <option value="Guardia">Operativo</option>
-            </select>
+                    <h1>Personal y anfitriones</h1>
 
-            <label for="password_hash">Contraseña:</label>
-            <input type="password" id="password_hash" name="password_hash" required>
+                    <p>
+                        Administra a los empleados con acceso a
+                        SENTINEL y define quiénes pueden recibir
+                        visitantes.
+                    </p>
+                </div>
+            </div>
 
-            <label for="es_anfitrion">Es anfitrión:</label>
-            <input type="checkbox" id="es_anfitrion" name="es_anfitrion">
+            <div class="personal-layout">
 
-            <button type="submit">Guardar</button>
-        </form>
-    </div>
+                <section class="personal-card personal-form-card">
 
-    <!-- Tabla -->
-    <div class="tablaUsuarios">
-        <table id="tablaUser" border="1">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>ID</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
-</div>
-    `
+                    <div class="personal-card-header">
+                        <h2>Registrar empleado</h2>
+
+                        <p>
+                            Captura los datos y permisos del nuevo
+                            integrante.
+                        </p>
+                    </div>
+
+                    <form id="formUser" class="personal-form">
+
+                        <div class="personal-field">
+                            <label for="nombre">
+                                Nombre completo
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nombre"
+                                name="nombre"
+                                placeholder="Ej. María Fernández"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+
+                        <div class="personal-field">
+                            <label for="correo">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                id="correo"
+                                name="correo"
+                                placeholder="nombre@empresa.com"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+
+                        <div class="personal-field">
+                            <label for="areaUsuario">
+                                Área o departamento
+                            </label>
+
+                            <div class="area-selector-group">
+                                <select
+                                    id="areaUsuario"
+                                    name="id_area"
+                                    required
+                                >
+                                    <option value="">
+                                        Selecciona un área
+                                    </option>
+                                </select>
+
+                                <button
+                                    type="button"
+                                    id="btnMostrarNuevaArea"
+                                    class="btn-nueva-area"
+                                >
+                                    + Nueva área
+                                </button>
+                            </div>
+                        </div>
+
+                        <div
+                            id="formNuevaArea"
+                            class="nueva-area-box"
+                            style="display: none;"
+                        >
+                            <div class="nueva-area-header">
+                                <div>
+                                    <strong>Registrar nueva área</strong>
+
+                                    <small>
+                                        La nueva área aparecerá automáticamente
+                                        en el selector.
+                                    </small>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    id="btnCerrarNuevaArea"
+                                    class="btn-cerrar-area"
+                                    aria-label="Cerrar"
+                                >
+                                    ×
+                                </button>
+                            </div>
+
+                            <div class="personal-field">
+                                <label for="nombreNuevaArea">
+                                    Nombre del área
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nombreNuevaArea"
+                                    placeholder="Ej. Calidad"
+                                    autocomplete="off"
+                                >
+                            </div>
+
+                            <div
+                                id="mensajeNuevaArea"
+                                class="personal-message"
+                                aria-live="polite"
+                            ></div>
+
+                            <button
+                                type="button"
+                                id="btnGuardarNuevaArea"
+                                class="btn-guardar-area"
+                            >
+                                Guardar área
+                            </button>
+                        </div>
+                        <div class="personal-field">
+                            <label for="rol">
+                                Rol dentro del sistema
+                            </label>
+
+                            <select
+                                id="rol"
+                                name="rol"
+                                required
+                            >
+                                <option value="">
+                                    Selecciona un rol
+                                </option>
+
+                                <option value="Administrador">
+                                    Administrador
+                                </option>
+
+                                <option value="Guardia">
+                                    Guardia
+                                </option>
+
+                                <option value="Operativo">
+                                    Operativo
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="personal-field">
+                            <label for="password_hash">
+                                Contraseña temporal
+                            </label>
+
+                            <input
+                                type="password"
+                                id="password_hash"
+                                name="password_hash"
+                                placeholder="Ingresa una contraseña"
+                                autocomplete="new-password"
+                                required
+                            >
+                        </div>
+
+                        <label class="anfitrion-option">
+                            <input
+                                type="checkbox"
+                                id="es_anfitrion"
+                                name="es_anfitrion"
+                            >
+
+                            <span class="anfitrion-check"></span>
+
+                            <span>
+                                <strong>
+                                    Disponible como anfitrión
+                                </strong>
+
+                                <small>
+                                    Podrá ser seleccionado para recibir
+                                    visitantes.
+                                </small>
+                            </span>
+                        </label>
+
+                        <div
+                            id="mensajeUsuario"
+                            class="personal-message"
+                            aria-live="polite"
+                        ></div>
+
+                        <button
+                            type="submit"
+                            id="btnGuardarUsuario"
+                            class="personal-submit"
+                        >
+                            Registrar empleado
+                        </button>
+
+                    </form>
+
+                </section>
+
+                <section class="personal-card personal-list-card">
+
+                    <div class="personal-card-header personal-list-header">
+                        <div>
+                            <h2>Personal registrado</h2>
+
+                            <p>
+                                Cuentas disponibles dentro de SENTINEL.
+                            </p>
+                        </div>
+
+                        <span
+                            id="totalUsuarios"
+                            class="personal-counter"
+                        >
+                            0 empleados
+                        </span>
+                    </div>
+
+                    <div class="personal-table-container">
+
+                        <table
+                            id="tablaUser"
+                            class="personal-table"
+                        >
+                            <thead>
+                                <tr>
+                                    <th>Empleado</th>
+                                    <th>Área</th>
+                                    <th>Correo</th>
+                                    <th>Rol</th>
+                                    <th>Anfitrión</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+
+                            <tbody></tbody>
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </section>
+    `,
 };
 
 // Función para reemplazar el contenido de <main>
